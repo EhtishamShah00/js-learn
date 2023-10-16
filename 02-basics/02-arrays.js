@@ -25,6 +25,9 @@ const score1 = 100;
 const score2 = 100;
 const score3 = 100;
 
+// const allsocores = score1.concat(score2, score3);
+// console.log(allsocores);
+
 console.log(Array.of(score1, score2, score3));
 
 console.log(Array.from({ name: "EHTISHAM" }));
