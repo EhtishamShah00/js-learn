@@ -67,8 +67,17 @@ fbUser.innerObject = {
 // ];
 // // userdata.forEach((users) => console.log(users.name));
 // console.log(userdata[1].id);
-console.log(fbUser);
-console.log(Object.keys(fbUser));
-console.log(Object.values(fbUser));
-console.log(Object.entries(fbUser));
-console.log(fbUser.hasOwnProperty("names"));
+// console.log(fbUser);
+// console.log(Object.keys(fbUser));
+// console.log(Object.values(fbUser));
+// console.log(Object.entries(fbUser));
+// console.log(fbUser.hasOwnProperty("names"));
+
+const course = {
+  courseName: "MTH604",
+  price: 999,
+  courseInstructor: "Ehtisham",
+};
+console.log(course.courseName);
+const { courseInstructor: instructor } = course;
+console.log(instructor);
