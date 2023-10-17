@@ -18,3 +18,6 @@ const stringArr = ["hello, ", "myName ", 2, 3, 4];
 // console.log(arr2);
 console.log("Remove " + stringArr.splice(0, 2) + "From");
 console.log(stringArr);
+
+const newArray = arr.slice(0, 4);
+console.log(newArray);
