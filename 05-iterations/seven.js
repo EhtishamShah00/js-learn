@@ -1,28 +1,18 @@
-// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9,10];
+const myNums = [1, 3, 2, 4, 5, 6, 7];
+// const addten = myNums.map((num) => num + 10);
+// let emptyArr = [];
 
-// const value = arr.forEach((item) => item);
-
-// console.log(value);
-
-// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-// // const myNum = arr.filter((num) => num > 5);
-
-// // const myNum = arr.filter((num) => {
-// //   return num > 5;
-// // });
-
-// let newNums = [];
-
-// arr.forEach((nums) => {
-//   if (nums > 4) {
-//     newNums.push(nums);
-//     return newNums;
-//   }
+// myNums.forEach((nums) => {
+//   emptyArr.push(nums + 10);
 // });
-// console.log(newNums);
-// const filterMethod = arr.filter((num) => num > 4);
-// console.log(filterMethod);
+// console.log(emptyArr);
+
+const newNums = myNums
+  .map((num) => num * 3)
+  .map((add) => add + 1)
+  .filter((fil) => fil >= 10);
+
+console.log(newNums);
 
 // const books = [
 //   { title: "Book One", genre: "Fiction", publish: 1981, edition: 2004 },
@@ -36,8 +26,8 @@
 //   { title: "Book Nine", genre: "Non-Fiction", publish: 1981, edition: 1989 },
 // ];
 
-// let userBooks = books.filter((book) => book.genre === "History");
-// userBooks = books.filter((book) => {
-//   return book.publish >= 1995 && book.genre === "History";
+// const newDates = books.map((bk) => {
+
 // });
-// console.log(userBooks);
+
+console.log(newDates);
