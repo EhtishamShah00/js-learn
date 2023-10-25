@@ -6,6 +6,9 @@
     <style>
       body {
         background-color: #212121;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .week {
         color: #fff;
@@ -26,17 +29,18 @@
   </body>
   <script>
     const parent = document.querySelector(".week");
-    // console.log(parent.children);
-    // console.log(parent.children[0].innerHTML);
-    // for (const item of parent.children) {
-    //   console.log(item.innerHTML);
-    // }
-    // parent.children[0].style.color = "blue";
-    // console.log(parent.firstElementChild);
-    // console.log(parent.lastElementChild);
     const childs = document.querySelector(".day");
-    console.log(childs.parentElement);
-    console.log(childs.nextElementSibling);
-    console.log("NODES", parent.childNodes);
+    // console.log(parent);
+    // console.log(parent.children);//Select all children of parent in an html collection
+    // console.log(parent.children[0].innerHTML);
+    // for (let i = 0; i < parent.children.length; i++) {
+    //   const element = parent.children[i];
+    //   element.style.color = "red";
+    // }
+    // console.log(parent.firstElementChild);//Select first child of parent
+    // console.log(parent.lastElementChild);//Select last child of parent
+    // console.log(childs.parentElement);//Select the parent of child
+    // console.log(childs.nextElementSibling);//Select the next child
+    console.log(parent.childNodes);
   </script>
 </html>
