@@ -4,5 +4,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM | CHAI & CODE</title>
   </head>
-  <body></body>
+  <body style="background-color: #121212; color: #fff">
+    <ul class="language">
+      <li>JavaScript</li>
+    </ul>
+    <script>
+      function addLanguage(language) {
+        const createListItem = document.createElement("li");
+        createListItem.innerHTML = language;
+        document.querySelector(".language").appendChild(createListItem);
+      }
+      addLanguage("C++");
+      addLanguage("Ruby");
+      function addOPlanguage(language) {
+        const createNewli = document.createElement("li");
+        createNewli.appendChild(document.createTextNode(language));
+        document.querySelector(".language").appendChild(createNewli);
+      }
+      addOPlanguage("C++");
+      addOPlanguage("Golang");
+
+      ///.............Edit Existing Element...................///
+      //1st Method
+      // const editElement = (document.querySelector("li:nth-child(2)").innerHTML =
+      //   "Python");//Not a good way to do because it will treverse the whole tree.
+      //2nd method
+      const secondli = document.querySelector("li:nth-child(2)");
+      const createElement = document.createElement("li");
+      createElement.textContent = "Mojo";
+      secondli.replaceWith(createElement);
+      //3rd Method
+      const firstli = document.querySelector("li");
+      firstli.outerHTML = "<li>TypeScript</li>";
+
+      ///.............Reomve Existing Element...................//
+
+      const mainParentul = document.querySelector(".language");
+      const lastLi = document.querySelector("li:last-child");
+
+      //1st Method
+      // mainParentul.removeChild(lastLi);
+      //2nd Method
+      lastLi.remove();
+    </script>
+  </body>
 </html>
