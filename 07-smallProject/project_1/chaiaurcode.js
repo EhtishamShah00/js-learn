@@ -28,6 +28,7 @@ const allButtons = document.querySelectorAll(".button");
 allButtons.forEach(function (i) {
   i.addEventListener("click", function (e) {
     const target = e.target;
+    console.log(target);
     if (target.id === "grey") {
       body.style.backgroundColor = e.target.id;
     } else if (target.id === "white") {

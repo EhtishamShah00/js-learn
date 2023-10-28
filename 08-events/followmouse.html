@@ -1,0 +1,43 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Follow Mouse</title>
+    <style>
+      body {
+        background-color: #121212;
+        overflow: hidden;
+      }
+      div {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        background: radial-gradient(
+          circle farthest-corner at center,
+          #ffffff,
+          #000000
+        );
+        filter: blur(50px);
+        position: absolute;
+        transition: all 0.05s;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      const mainParentdiv = document.querySelector("body");
+      function tranlateXY(e) {
+        return `translate(${e.clientX - 110}px,${e.clientY - 100}px)`;
+      }
+      function createDot(mainDiv) {
+        mainDiv.addEventListener("mousemove", function (e) {
+          document.querySelector("div").style.transform = tranlateXY(e);
+          e.preventDefault();
+        });
+      }
+
+      createDot(mainParentdiv);
+    </script>
+  </body>
+</html>

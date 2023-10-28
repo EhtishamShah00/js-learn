@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>doc</title>
+    <style>
+      body {
+        background-color: #121212;
+      }
+      div {
+        display: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        background-color: #fda0a0;
+        position: absolute;
+        opacity: 0; /* Initially set to transparent */
+        transition: opacity 0.5s ease; /* Apply fade-in transition */
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const mainParentdiv = document.querySelector("body");
+
+      function randomColorChange() {
+        let random1 = Math.floor(Math.random() * 255);
+        let random2 = Math.floor(Math.random() * 255);
+        let random3 = Math.floor(Math.random() * 255);
+        return `rgba(${random1}, ${random2}, ${random3})`;
+      }
+      function tranlateXY(e) {
+        return `translate(${e.clientX - 28}px,${e.clientY - 25}px)`;
+      }
+      function createDot(mainDiv) {
+        mainDiv.addEventListener("click", function (e) {
+          const child = document.createElement("div");
+          if (e) {
+            child.style.transform = tranlateXY(e);
+            child.style.display = "block";
+            child.style.backgroundColor = randomColorChange();
+            mainDiv.appendChild(child);
+            requestAnimationFrame(() => {
+              child.style.opacity = 1;
+            });
+          }
+          e.preventDefault();
+        });
+      }
+
+      createDot(mainParentdiv);
+    </script>
+  </body>
+</html>
