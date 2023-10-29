@@ -1,0 +1,29 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello How are You</h1>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    const sayEhtisham = () => {
+      console.log("Ehtisham");
+    };
+    let hello = 0;
+    const changeText = function () {
+      document.querySelector("h1").setHTML("Best Series");
+    };
+    const countDown = setInterval(() => {
+      hello += 1;
+      console.log(hello);
+    }, 1000);
+    const time = setTimeout(changeText, 4000);
+    document.querySelector("#stop").addEventListener("click", function () {
+      clearTimeout(time);
+      clearInterval(countDown);
+    });
+  </script>
+</html>
