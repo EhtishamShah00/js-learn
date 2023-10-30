@@ -1,0 +1,136 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CARD</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #fff;
+      }
+      * {
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+      }
+      button {
+        padding: 15px;
+        background-color: #24a0ed;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        transition: all 0.2s;
+      }
+      button:hover {
+        background-color: #1e88ca;
+      }
+      #card {
+        background-color: #fff;
+        color: #121212;
+        padding: 13px;
+        border-radius: 12px;
+        transition: all 0.3s;
+        display: none;
+      }
+      #card:hover {
+        box-shadow: 5px 5px 0 0 rgba(231, 231, 231, 1),
+          10px 10px 0 0 rgba(231, 231, 231, 0.6),
+          15px 15px 0 0 rgba(231, 231, 231, 0.4),
+          20px 20px 0 0 rgba(231, 231, 231, 0.2),
+          25px 25px 0 0 rgba(231, 231, 231, 0.1);
+      }
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .img-con {
+        margin-bottom: 10px;
+      }
+      img {
+        width: 300px;
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+          rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+        border-radius: 12px;
+      }
+      #name {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .follower {
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+      }
+
+      p {
+        margin: 0;
+        color: #292929;
+      }
+      span {
+        color: #bdbdbd;
+      }
+    </style>
+  </head>
+  <body style="background-color: #121212">
+    <main>
+      <button id="getUser">CLICK TO GET USER</button>
+      <div id="card">
+        <div class="card-body">
+          <div class="img-con">
+            <img src="" alt="" id="profile" />
+          </div>
+          <div class="name_con">
+            <p id="name">Ehtisham Shah</p>
+          </div>
+          <div class="follower">
+            <p id="followers">43344</p>
+            <span>Followers</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    const card = document.getElementById("card");
+    const names = document.getElementById("name");
+    const followers = document.getElementById("followers");
+    const img = document.getElementById("profile");
+
+    ////////////////////////////////////////////
+
+    const requestURL = "https://api.github.com/users/hiteshchoudhary";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", requestURL);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        const data = JSON.parse(this.responseText);
+        names.innerHTML = `${data.name}`;
+        img.setAttribute("src", `${data.avatar_url}`);
+        followers.innerHTML = `${data.followers}`;
+      }
+    };
+    xhr.send();
+
+    ////////////////////////////////////////////
+
+    const button = document
+      .getElementById("getUser")
+      .addEventListener("click", function (e) {
+        card.style.display = "block";
+        e.currentTarget.style.display = "none";
+      });
+  </script>
+</html>
