@@ -27,14 +27,63 @@
         font-size: 24px;
         font-weight: bold;
         text-align: center;
+        transition: all 0.3s;
       }
       input:disabled {
         background-color: #fff;
+      }
+      .playerChoice {
+        background: #2c32a6;
+        color: #fff;
+        font-size: 18px;
+        transition: all 0.3s;
+      }
+      .restartBtn {
+        background: #2c32a6;
+        color: #fff;
+        border-radius: 5px;
+        border: 1px solid #212121;
+        font-size: 18px;
+        padding: 10px;
+        transition: all 0.3s;
+        display: none;
+      }
+      .restartBtn:hover {
+        background: #232881;
+      }
+      .buttonDiv {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .SelectDiv {
+        text-align: center;
+      }
+      .SelectDiv .hide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .selectPlayer {
+        display: flex;
+        flex-direction: column;
       }
     </style>
   </head>
   <body>
     <main>
+      <div class="SelectDiv">
+        <p class="playerChoice">Choice Player</p>
+        <div class="hide">
+          <div class="selectPlayer">
+            <label for="playe1">X</label>
+            <input type="checkbox" value="ply1" id="playe1" />
+          </div>
+          <div class="selectPlayer">
+            <label for="playe2">O</label>
+            <input type="checkbox" value="ply2" id="playe2" />
+          </div>
+        </div>
+      </div>
       <div>
         <input type="text" value="" id="box1" readonly />
         <input type="text" value="" id="box2" readonly />
@@ -50,22 +99,28 @@
         <input type="text" value="" id="box8" readonly />
         <input type="text" value="" id="box9" readonly />
       </div>
+      <div class="buttonDiv">
+        <button class="restartBtn">Click to restart</button>
+      </div>
     </main>
   </body>
   <script>
     // All butoons
-    const allinputs = document.querySelectorAll("input");
-    let box1
-    let box2 
-    let box3
-    let box4
-    let box5 
+    const allinputs = document.querySelectorAll('input[type="text"]');
+    const allinputsCheck = document.querySelectorAll('input[type="checkbox"]');
+    const button = document.querySelector(".restartBtn");
+    let box1;
+    let box2;
+    let box3;
+    let box4;
+    let box5;
     let box6;
     let box7;
     let box8;
     let box9;
-    let player1 = true;
-    let player2 = false;
+    let player1;
+    let player2;
+
     allinputs.forEach((e) => {
       e.addEventListener("click", function (item) {
         if (player1) {
@@ -104,26 +159,77 @@
         (box7 == "X" && box8 == "X" && box9 == "X") ||
         (box1 == "X" && box4 == "X" && box7 == "X") ||
         (box2 == "X" && box5 == "X" && box8 == "X") ||
-        (box3 == "X" && box6 == "X" && box0 == "X") ||
+        (box3 == "X" && box6 == "X" && box9 == "X") ||
         (box1 == "X" && box5 == "X" && box9 == "X") ||
-        (box3 == "X" && box5 == "X" && box6 == "X")
+        (box3 == "X" && box5 == "X" && box7 == "X")
       ) {
-      document.querySelector("main").appendChild(document.createElement("button"))
+        alert("PLAYER X WINS");
+        disableEveryOne();
+        restart();
       } else if (
         (box1 == "O" && box2 == "O" && box3 == "O") ||
         (box4 == "O" && box5 == "O" && box6 == "O") ||
         (box7 == "O" && box8 == "O" && box9 == "O") ||
         (box1 == "O" && box4 == "O" && box7 == "O") ||
         (box2 == "O" && box5 == "O" && box8 == "O") ||
-        (box3 == "O" && box6 == "O" && box0 == "O") ||
+        (box3 == "O" && box6 == "O" && box9 == "O") ||
         (box1 == "O" && box5 == "O" && box9 == "O") ||
-        (box3 == "O" && box5 == "O" && box6 == "O")
+        (box3 == "O" && box5 == "O" && box7 == "O")
       ) {
-      document.querySelector("main").appendChild(document.createElement("button"))
+        alert("PLAYER O WINS");
+        disableEveryOne();
+        restart();
       }
     }
-    function disableEveryOne(element){
-      element.style.disabled=true
+    function disableEveryOne() {
+      document.getElementById("box1").setAttribute("disabled", "true");
+      document.getElementById("box2").setAttribute("disabled", "true");
+      document.getElementById("box3").setAttribute("disabled", "true");
+      document.getElementById("box4").setAttribute("disabled", "true");
+      document.getElementById("box5").setAttribute("disabled", "true");
+      document.getElementById("box6").setAttribute("disabled", "true");
+      document.getElementById("box7").setAttribute("disabled", "true");
+      document.getElementById("box8").setAttribute("disabled", "true");
+      document.getElementById("box9").setAttribute("disabled", "true");
     }
+
+    function restart() {
+      button.style.display = "block";
+      button.addEventListener("click", function (e) {
+        box1 = document.getElementById("box1").value = "";
+        box2 = document.getElementById("box2").value = "";
+        box3 = document.getElementById("box3").value = "";
+        box4 = document.getElementById("box4").value = "";
+        box5 = document.getElementById("box5").value = "";
+        box6 = document.getElementById("box6").value = "";
+        box7 = document.getElementById("box7").value = "";
+        box8 = document.getElementById("box8").value = "";
+        box9 = document.getElementById("box9").value = "";
+        e.currentTarget.style.display = "none";
+        document.querySelector(".SelectDiv").style.display = "block";
+        player1 = false;
+        player2 = false;
+        allinputsCheck.forEach((checkbox) => {
+          checkbox.checked = false;
+          checkbox.value = "";
+        });
+      });
+    }
+    function checkPlayer() {
+      allinputsCheck.forEach((e) => {
+        e.addEventListener("click", function (j) {
+          if (j.currentTarget.value === "ply1") {
+            player1 = true;
+            player2 = false;
+            document.querySelector(".SelectDiv").style.display = "none";
+          } else {
+            player2 = true;
+            player1 = false;
+            document.querySelector(".SelectDiv").style.display = "none";
+          }
+        });
+      });
+    }
+    checkPlayer();
   </script>
 </html>
