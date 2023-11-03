@@ -32,6 +32,9 @@
       input:disabled {
         background-color: #fff;
       }
+      input[type="text"]:hover {
+        transform: translate(0, -4px);
+      }
       .playerChoice {
         background: #2c32a6;
         color: #fff;
@@ -67,20 +70,31 @@
         display: flex;
         flex-direction: column;
       }
+      input[type="button"] {
+        background: #ab2323;
+        color: #fff;
+        border-radius: 5px;
+        border: 1px solid #212121;
+        font-size: 14px;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        transition: all 0.3s;
+      }
+      input[type="button"]:hover {
+        background: #891c1c;
+      }
     </style>
   </head>
   <body>
     <main>
       <div class="SelectDiv">
-        <p class="playerChoice">Choice Player</p>
+        <p class="playerChoice">Choice Symbol</p>
         <div class="hide">
           <div class="selectPlayer">
-            <label for="playe1">X</label>
-            <input type="checkbox" value="ply1" id="playe1" />
+            <input type="button" value="X" id="playe1" />
           </div>
           <div class="selectPlayer">
-            <label for="playe2">O</label>
-            <input type="checkbox" value="ply2" id="playe2" />
+            <input type="button" value="O" id="playe2" />
           </div>
         </div>
       </div>
@@ -107,7 +121,7 @@
   <script>
     // All butoons
     const allinputs = document.querySelectorAll('input[type="text"]');
-    const allinputsCheck = document.querySelectorAll('input[type="checkbox"]');
+    const allinputsCheck = document.querySelectorAll('input[type="button"]');
     const button = document.querySelector(".restartBtn");
     let box1;
     let box2;
@@ -120,7 +134,6 @@
     let box9;
     let player1;
     let player2;
-
     allinputs.forEach((e) => {
       e.addEventListener("click", function (item) {
         if (player1) {
@@ -134,11 +147,12 @@
           player1 = true;
           player2 = false;
         }
-
         if (item.currentTarget.value === "X") {
           item.currentTarget.style.color = "red";
-        } else {
+        } else if (item.currentTarget.value === "O") {
           item.currentTarget.style.color = "blue";
+        } else {
+          item.currentTarget.style.color = "";
         }
         box1 = document.getElementById("box1").value;
         box2 = document.getElementById("box2").value;
@@ -179,18 +193,21 @@
         alert("PLAYER O WINS");
         disableEveryOne();
         restart();
+      } else if (
+        [...allinputs].every(
+          (input) => input.value === "X" || input.value === "O"
+        )
+      ) {
+        alert("NO ONE WINS (DRAW)");
+        restart();
       }
     }
     function disableEveryOne() {
-      document.getElementById("box1").setAttribute("disabled", "true");
-      document.getElementById("box2").setAttribute("disabled", "true");
-      document.getElementById("box3").setAttribute("disabled", "true");
-      document.getElementById("box4").setAttribute("disabled", "true");
-      document.getElementById("box5").setAttribute("disabled", "true");
-      document.getElementById("box6").setAttribute("disabled", "true");
-      document.getElementById("box7").setAttribute("disabled", "true");
-      document.getElementById("box8").setAttribute("disabled", "true");
-      document.getElementById("box9").setAttribute("disabled", "true");
+      allinputs.forEach((e) => e.setAttribute("disabled", "true"));
+    }
+
+    function undisableEveryOne() {
+      allinputs.forEach((e) => e.removeAttribute("disabled", "false"));
     }
 
     function restart() {
@@ -207,29 +224,36 @@
         box9 = document.getElementById("box9").value = "";
         e.currentTarget.style.display = "none";
         document.querySelector(".SelectDiv").style.display = "block";
-        player1 = false;
-        player2 = false;
-        allinputsCheck.forEach((checkbox) => {
-          checkbox.checked = false;
-          checkbox.value = "";
-        });
+        allinputs.forEach((e) => (e.style.color = ""));
       });
+      undisableEveryOne();
+      player1 = false;
+      player2 = false;
     }
     function checkPlayer() {
       allinputsCheck.forEach((e) => {
         e.addEventListener("click", function (j) {
-          if (j.currentTarget.value === "ply1") {
+          if (j.currentTarget.value === "X") {
             player1 = true;
             player2 = false;
-            document.querySelector(".SelectDiv").style.display = "none";
-          } else {
+          } else if (j.currentTarget.value === "O") {
             player2 = true;
             player1 = false;
-            document.querySelector(".SelectDiv").style.display = "none";
           }
+
+          document.querySelector(".SelectDiv").style.display = "none";
+          console.log(player1, player2);
+          j.preventDefault();
         });
       });
+      undisableEveryOne();
     }
+
     checkPlayer();
+    console.log(
+      [...allinputs].every(
+        (input) => input.value === "X" || input.value === "O"
+      )
+    );
   </script>
 </html>
