@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Page Title</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #2e2e2e; /* Set a light background color for the body */
+      }
+
+      section {
+        background-color: #ffffff; /* Set a white background color for the section */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+        border-radius: 10px; /* Add border radius to the section */
+        overflow: hidden; /* Hide overflowing content */
+        width: 80%; /* Adjust the section width */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px;
+        margin: 20px; /* Add some margin to the section */
+      }
+
+      .container1 {
+        max-width: 50%; /* Adjust the maximum width of the container */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      h1 {
+        color: #111111; /* Set a vibrant color for the heading */
+        font-size: 3em; /* Increase the font size of the heading */
+        margin-bottom: 0; /* Remove margin bottom for the heading */
+        font-weight: 700;
+      }
+
+      p {
+        color: #666;
+        font-size: 1.2em;
+        margin-top: 0; /* Remove margin top for the paragraph */
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px; /* Add some margin to the buttons */
+      }
+
+      .rounded-md {
+        margin: 0 10px;
+        overflow: hidden;
+      }
+      .get-started a,
+      a:link {
+        text-decoration: none;
+        color: #fff;
+      }
+      .live-demo a,
+      a:link {
+        text-decoration: none;
+      }
+      .live-demo {
+        background: #e1e5e8;
+      }
+      .get-started {
+        background-color: #242424;
+      }
+      .get-started,
+      .live-demo {
+        padding: 15px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease; /* Add a smooth transition */
+      }
+
+      .get-started:hover,
+      .live-demo:hover {
+        background-color: #2779bd;
+      }
+
+      .container2 {
+        max-width: 50%; /* Adjust the maximum width of the container */
+      }
+
+      img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow to the image */
+      }
+      .buttons {
+        align-self: flex-start;
+      }
+      .inner {
+        color: #2779bd;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="container1">
+        <h1>
+          <span class="block xl-inline">Data to enrich your</span>
+          <span class="block inner">online business</span>
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
+          veniam praesentium possimus error earum nobis aspernatur aliquid
+          iusto, accusamus, autem ab suscipit sit! Aliquid tempore
+        </p>
+        <div class="buttons">
+          <div class="rounded-md get-started">
+            <a href="#">Get started</a>
+          </div>
+          <div class="rounded-md live-demo">
+            <a href="#">Live demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="container2">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1684175656154-ac52b3cc2c60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8"
+          alt=""
+        />
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "html-to-json",
+  "version": "1.0.0",
+  "description": "A simple Node.js program to extract data from an HTML file and output it in JSON format",
+  "main": "extractData.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "HTML",
+    "JSON",
+    "cheerio"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
